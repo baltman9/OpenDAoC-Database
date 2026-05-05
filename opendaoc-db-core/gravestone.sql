@@ -7,13 +7,22 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE TABLE IF NOT EXISTS `scheduledrollovers` (
-  `LastRollover` datetime NOT NULL DEFAULT '2000-01-01 00:00:00',
-  `RolloverIntervalKey` int(11) NOT NULL DEFAULT 0,
+CREATE TABLE IF NOT EXISTS `gravestone` (
+  `OwnerId` varchar(255) NOT NULL,
+  `Name` text NOT NULL,
+  `X` int(11) NOT NULL DEFAULT 0,
+  `Y` int(11) NOT NULL DEFAULT 0,
+  `Z` int(11) NOT NULL DEFAULT 0,
+  `Heading` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `Region` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `Model` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `XpValue` bigint(20) NOT NULL DEFAULT 0,
+  `CreationTime` datetime NOT NULL DEFAULT '2000-01-01 00:00:00',
   `LastTimeRowUpdated` datetime NOT NULL DEFAULT '2000-01-01 00:00:00',
-  `ScheduledRollovers_ID` varchar(255) NOT NULL,
-  PRIMARY KEY (`ScheduledRollovers_ID`),
-  UNIQUE KEY `U_ScheduledRollovers_RolloverIntervalKey` (`RolloverIntervalKey`)
+  `Gravestone_ID` varchar(255) NOT NULL,
+  PRIMARY KEY (`Gravestone_ID`),
+  KEY `I_Gravestone_OwnerId` (`OwnerId`),
+  KEY `I_Gravestone_Region` (`Region`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 
